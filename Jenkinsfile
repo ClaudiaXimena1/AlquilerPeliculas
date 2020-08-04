@@ -35,17 +35,16 @@ pipeline {
 	stage('Build') {
       steps {
         echo "------------>Build<------------"
-		sh 'chmod +x gradlew'
-		sh './gradlew --b ./build.gradle clean'
-		sh './gradlew --b ./build.gradle build -x test'
+		sh 'gradle --b ./alquilerpeliculas/build.gradle clean'
+		sh 'gradle --b ./build.gradle build -x test'
       }
     }
     
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-		sh './gradlew --b ./build.gradle test'
-		sh './gradlew --b ./build.gradle jacocoTestReport'
+		sh 'gradle --b ./build.gradle test'
+		sh 'gradle --b ./build.gradle jacocoTestReport'
       }
     }
 
