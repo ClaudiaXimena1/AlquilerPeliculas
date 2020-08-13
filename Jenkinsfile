@@ -9,8 +9,8 @@ pipeline {
   }
 
   tools {
-    jdk 'JDK8_Centos' //Preinstalada en la Configuración del Master
-    gradle 'Gradle4.5_Centos' //Preinstalada en la Configuración del Master
+    jdk 'JDK8_Centos'
+    gradle 'Gradle4.5_Centos'
   }
 
   stages{
@@ -22,7 +22,7 @@ pipeline {
 		branches: [[name: '*/master']], 
 		doGenerateSubmoduleConfigurations: false, 
 		extensions: [], 
-		gitTool: 'Default', 
+		gitTool: 'Git_Centos', 
 		submoduleCfg: [], 
 		userRemoteConfigs: [[
 		credentialsId: 'GitHub_ClaudiaXimena1', 
@@ -35,15 +35,17 @@ pipeline {
 	stage('Build') {
       steps {
         echo "------------>Build<------------"
-		sh 'gradle --b ./build.gradle build -x test'
+		sh 'chmod +x gradlew'
+		sh './gradlew --b ./build.gradle clean'
+		sh './gradlew --b ./build.gradle build -x test'
       }
     }
     
     stage('Compile & Unit Tests') {
       steps{
         echo "------------>Unit Tests<------------"
-		sh 'gradle --b ./build.gradle test'
-		sh 'gradle --b ./build.gradle jacocoTestReport'
+		sh './gradlew --b ./build.gradle test'
+		sh './gradlew --b ./build.gradle jacocoTestReport'
       }
     }
 
@@ -51,7 +53,7 @@ pipeline {
       steps{
         echo '------------>Análisis de código estático<------------'
         withSonarQubeEnv('Sonar') {
-		sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=sonar-project.properties"
+		sh "${tool name: 'SonarScanner', type:'hudson.plugins.sonar.SonarRunnerInstallation'}/bin/sonar-scanner -Dproject.settings=./sonar-project.properties"
         }
       }
     }
@@ -66,7 +68,8 @@ pipeline {
     }
     failure {
       echo 'This will run only if failed'
-	  mail (to: 'claudia.bustamante@ceiba.com.co',subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
+	  mail (to: 'claudia.bustamante@ceiba.com.co',
+			subject: "Failed Pipeline:${currentBuild.fullDisplayName}",body: "Something is wrong with ${env.BUILD_URL}")
     }
   }
 }
