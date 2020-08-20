@@ -1,0 +1,2 @@
+INSERT INTO pelicula_entity(nombre, genero, duracion) VALUES ('El Cuaderno de Sara','Drama','2 horas 10 minutos');
+INSERT INTO pelicula_entity(nombre, genero, duracion) VALUES ('Sombra en la Ciudad','Suspenso','1 hora 45 minutos');
