@@ -38,7 +38,7 @@ dependencies {
 	testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.6.0-M1'
     testCompile group: 'org.junit.platform', name: 'junit-platform-runner', version: '1.6.0-M1'
     testCompile group: 'org.mockito', name: 'mockito-core', version: '2.1.0'
-    testRuntimeOnly 'com.h2database:h2'
+    //testRuntimeOnly 'com.h2database:h2'
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}

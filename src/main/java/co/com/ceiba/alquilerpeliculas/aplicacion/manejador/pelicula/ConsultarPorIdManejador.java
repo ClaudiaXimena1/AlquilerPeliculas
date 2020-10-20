@@ -4,20 +4,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Pelicula;
-import co.com.ceiba.alquilerpeliculas.dominio.servicio.PeliculaServicio;
+import co.com.ceiba.alquilerpeliculas.dominio.servicio.pelicula.ConsultarPorIdServicio;
 
 @Component
 public class ConsultarPorIdManejador {
 	
-	private final PeliculaServicio peliculaServicio;
+	private final ConsultarPorIdServicio consultaPeliculaPorIdServicio;
 
 	@Autowired
-	public ConsultarPorIdManejador(PeliculaServicio peliculaServicio) {
-		this.peliculaServicio = peliculaServicio;
+	public ConsultarPorIdManejador(ConsultarPorIdServicio consultaPeliculaPorIdServicio) {
+		this.consultaPeliculaPorIdServicio = consultaPeliculaPorIdServicio;
 	}
 
 	public Pelicula ejecutar(Long id) {
-		return peliculaServicio.consultaPorId(id);
+		return consultaPeliculaPorIdServicio.ejecutar(id);
 	}
 
 }

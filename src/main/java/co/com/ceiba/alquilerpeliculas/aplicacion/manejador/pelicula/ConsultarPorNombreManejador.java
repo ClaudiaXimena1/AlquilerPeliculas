@@ -6,20 +6,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.PeliculaDto;
-import co.com.ceiba.alquilerpeliculas.dominio.servicio.PeliculaServicio;
+import co.com.ceiba.alquilerpeliculas.dominio.servicio.pelicula.ConsultarPorNombreServicio;
 
 @Component
 public class ConsultarPorNombreManejador {
 
-	private final PeliculaServicio peliculaServicio;
+	private final ConsultarPorNombreServicio consultaPeliculaPorNombreServicio;
 
 	@Autowired
-	public ConsultarPorNombreManejador(PeliculaServicio peliculaServicio) {
-		this.peliculaServicio = peliculaServicio;
+	public ConsultarPorNombreManejador(ConsultarPorNombreServicio consultaPeliculaPorNombreServicio) {
+		this.consultaPeliculaPorNombreServicio = consultaPeliculaPorNombreServicio;
 	}
 
 	public List<PeliculaDto> ejecutar(String nombre) {
-		return peliculaServicio.consultaPorNombre(nombre);
+		return consultaPeliculaPorNombreServicio.ejecutar(nombre);
 	}
 
 }

@@ -1,18 +1,24 @@
 package co.com.ceiba.alquilerpeliculas.dominio.model.entidad;
 
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
 public class Pelicula {
 
+	private static final String EL_NOMBRE_ES_UN_DATO_OBLIGATORIO = "El nombre es un dato obligatorio.";
+	private static final String EL_GENERO_ES_UN_DATO_OBLIGATORIO = "El genero es un dato obligatorio.";
+	private static final String LA_DURACION_ES_UN_DATO_OBLIGATORIO = "La duracion es un dato obligatorio.";
+	
 	private Long id;
 	private String nombre;
 	private String genero;
 	private String duracion;
 
-	public Pelicula() {
-		super();
-	}
-
 	public Pelicula(Long id, String nombre, String genero, String duracion) {
-		super();
+		ValidadorAtributos.validarAtributos(nombre, EL_NOMBRE_ES_UN_DATO_OBLIGATORIO);
+		ValidadorAtributos.validarAtributos(genero, EL_GENERO_ES_UN_DATO_OBLIGATORIO);
+		ValidadorAtributos.validarAtributos(duracion, LA_DURACION_ES_UN_DATO_OBLIGATORIO);
+		
 		this.id = id;
 		this.nombre = nombre;
 		this.genero = genero;

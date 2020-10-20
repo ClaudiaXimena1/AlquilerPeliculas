@@ -5,20 +5,20 @@ import org.springframework.stereotype.Component;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.PeliculaDto;
 import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Pelicula;
-import co.com.ceiba.alquilerpeliculas.dominio.servicio.PeliculaServicio;
+import co.com.ceiba.alquilerpeliculas.dominio.servicio.pelicula.ActualizarPeliculaServicio;
 
 @Component
 public class ActualizarPeliculaManejador {
-	
-	private final PeliculaServicio peliculaServicio;
-	
+
+	private final ActualizarPeliculaServicio updPeliculaServicio;
+
 	@Autowired
-	public ActualizarPeliculaManejador(PeliculaServicio peliculaServicio) {
-		this.peliculaServicio = peliculaServicio;
+	public ActualizarPeliculaManejador(ActualizarPeliculaServicio peliculaServicio) {
+		this.updPeliculaServicio = peliculaServicio;
 	}
-	
+
 	public PeliculaDto ejecutar(Pelicula pelicula) {
-		return peliculaServicio.actualizar(pelicula);
+		return updPeliculaServicio.ejecutar(pelicula);
 	}
 
 }

@@ -67,7 +67,7 @@ public class PeliculaControladorTest {
 		PeliculaDto peliculaDto = new PeliculaTestDataBuilder().build();
 
 		try {
-			mocMvc.perform(MockMvcRequestBuilders.post("/Peliculas/crearPelicula").content(asJsonString(peliculaDto))
+			mocMvc.perform(MockMvcRequestBuilders.post("/gestion-peliculas/peliculas").content(asJsonString(peliculaDto))
 					.characterEncoding("UTF-8").contentType(MediaType.APPLICATION_JSON)
 					.accept(MediaType.APPLICATION_JSON)).andExpect(status().isCreated());
 		} catch (Exception e) {
@@ -84,7 +84,7 @@ public class PeliculaControladorTest {
 		when(this.consultarPorGeneroManejador.ejecutar("Suspenso")).thenReturn((peliculaDto));
 
 		try {
-			mocMvc.perform(get("/Peliculas/consultarPeliGenero/Suspenso"))
+			mocMvc.perform(get("/gestion-peliculas/peliculas/genero/Suspenso"))
 					.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 					.andExpect(jsonPath("$[0].nombre", is("Sombra en la Ciudad")))
 					.andExpect(jsonPath("$[0].genero", is("Suspenso"))).andExpect(status().isOk());
@@ -101,7 +101,7 @@ public class PeliculaControladorTest {
 		when(this.consultarPorNombreManejador.ejecutar("Cuaderno")).thenReturn((peliculaDto));
 
 		try {
-			mocMvc.perform(get("/Peliculas/consultarPeliNombre/Cuaderno"))
+			mocMvc.perform(get("/gestion-peliculas/peliculas/nombre/Cuaderno"))
 					.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 					.andExpect(jsonPath("$[0].nombre", is("El Cuaderno de Sara")))
 					.andExpect(jsonPath("$[0].genero", is("Drama"))).andExpect(status().isOk());
@@ -116,9 +116,9 @@ public class PeliculaControladorTest {
 		PeliculaDto peliculaDto = new PeliculaDto("El Cuaderno de Sara", "Drama", "2 horas 20 minutos");
 		
 		try {
-			mocMvc.perform(MockMvcRequestBuilders.put("/Peliculas/actualizarPelicula/{id}", id).content(asJsonString(peliculaDto))
+			mocMvc.perform(MockMvcRequestBuilders.put("/gestion-peliculas/peliculas/{id}", id).content(asJsonString(peliculaDto))
 					.characterEncoding("UTF-8").contentType(MediaType.APPLICATION_JSON)
-					.accept(MediaType.APPLICATION_JSON)).andExpect(status().isNotFound());
+					.accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
