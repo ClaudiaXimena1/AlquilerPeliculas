@@ -3,7 +3,7 @@ package co.com.ceiba.alquilerpeliculas.infraestructura.repositorio.entity.factor
 import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Cliente;
 import co.com.ceiba.alquilerpeliculas.infraestructura.repositorio.entity.ClienteEntity;
 
-public class ClienteFactory {
+public final class ClienteFactory {
 
 	private ClienteFactory() {
 

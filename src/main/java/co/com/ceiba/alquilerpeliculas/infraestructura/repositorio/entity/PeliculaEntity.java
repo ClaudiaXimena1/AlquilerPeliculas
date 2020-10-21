@@ -1,5 +1,6 @@
 package co.com.ceiba.alquilerpeliculas.infraestructura.repositorio.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +17,12 @@ public class PeliculaEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
+	
+	@Column(name = "nombre")
 	private String nombre;
+	@Column(name = "genero")
 	private String genero;
+	@Column(name = "duracion")
 	private String duracion;
 
 	public PeliculaEntity() {
