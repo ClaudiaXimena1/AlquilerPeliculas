@@ -2,7 +2,7 @@ package co.com.ceiba.alquilerpeliculas.dominio.model.entidad;
 
 import co.com.ceiba.alquilerpeliculas.dominio.excepcion.ValidaAtributosObligatorios;
 
-public class ValidadorAtributos {
+public final class ValidadorAtributos {
     
 	private ValidadorAtributos() {}
 	
