@@ -27,9 +27,9 @@ public class Alquiler {
 		super();
 		this.id = id;
 		this.fechaAlquiler = (Date) fechaAlquiler.clone();
-		this.fechaEntrega = fechaEntrega;
+		this.fechaEntrega = (Date) fechaEntrega.clone();
 		this.valor = valor;
-		this.fechaRegistro = fechaRegistro;
+		this.fechaRegistro = (Date) fechaRegistro.clone();
 		this.cliente = cliente;
 		this.pelicula = pelicula;
 	}
@@ -39,19 +39,19 @@ public class Alquiler {
 	}
 
 	public Date getFechaAlquiler() {
-		return fechaAlquiler;
+		return (Date) fechaAlquiler.clone();
 	}
 
 	public void setFechaAlquiler(Date fechaAlquiler) {
-		this.fechaAlquiler = fechaAlquiler;
+		this.fechaAlquiler = (Date) fechaAlquiler.clone();
 	}
 
 	public Date getFechaEntrega() {
-		return fechaEntrega;
+		return (Date) fechaEntrega.clone();
 	}
 
 	public void setFechaEntrega(Date fechaEntrega) {
-		this.fechaEntrega = fechaEntrega;
+		this.fechaEntrega = (Date) fechaEntrega.clone();
 	}
 
 	public Double getValor() {
@@ -63,11 +63,11 @@ public class Alquiler {
 	}
 
 	public Date getFechaRegistro() {
-		return fechaRegistro;
+		return (Date) fechaRegistro.clone();
 	}
 
 	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
+		this.fechaRegistro = (Date) fechaRegistro.clone();
 	}
 
 	public Cliente getCliente() {

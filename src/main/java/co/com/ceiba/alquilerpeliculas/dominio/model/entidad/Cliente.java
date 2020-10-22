@@ -25,7 +25,7 @@ public class Cliente {
 		this.direccion = direccion;
 		this.telefonoFijo = telefonoFijo;
 		this.telefonoMovil = telefonoMovil;
-		this.fechaRegistro = fechaRegistro;
+		this.fechaRegistro = (Date) fechaRegistro.clone();
 	}
 
 	public Long getId() {
@@ -81,11 +81,11 @@ public class Cliente {
 	}
 
 	public Date getFechaRegistro() {
-		return fechaRegistro;
+		return (Date) fechaRegistro.clone();
 	}
 
 	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
+		this.fechaRegistro = (Date) fechaRegistro.clone();
 	}
 
 }
