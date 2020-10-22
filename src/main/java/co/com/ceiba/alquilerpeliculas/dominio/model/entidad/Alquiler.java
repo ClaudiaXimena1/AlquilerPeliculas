@@ -26,7 +26,7 @@ public class Alquiler {
 			Pelicula pelicula) {
 		super();
 		this.id = id;
-		this.fechaAlquiler = fechaAlquiler;
+		this.fechaAlquiler = (Date) fechaAlquiler.clone();
 		this.fechaEntrega = fechaEntrega;
 		this.valor = valor;
 		this.fechaRegistro = fechaRegistro;
