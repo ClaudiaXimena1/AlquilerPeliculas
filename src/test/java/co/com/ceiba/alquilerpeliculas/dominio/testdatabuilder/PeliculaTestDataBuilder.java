@@ -31,6 +31,10 @@ public class PeliculaTestDataBuilder {
 		return this;
 	}
 	
+	public PeliculaTestDataBuilder setId(Long id) {
+		this.id = id;
+		return this;
+	}	
 
 	public Pelicula build() {
 		return new Pelicula(id, nombre, genero, duracion);

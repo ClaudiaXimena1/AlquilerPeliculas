@@ -2,6 +2,7 @@ package co.com.ceiba.alquilerpeliculas.dominio.servicio.pelicula;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,6 +29,23 @@ public class ActualizarPeliculaServicioTest {
 		PeliculaDto peliculaDto = actualizarPeliculaServicio.ejecutar(peliculaTestDataBuilder.build());
 		
 		assertEquals("3 horas 50 minutos", peliculaDto.getDuracion());
+		
+	}
+	
+	@Test
+	public void validaNoExistePeliTest() {
+		
+		final String mensage = "La pelicula no existe en el sistema";
+		PeliculaTestDataBuilder peliculaTestDataBuilder = new PeliculaTestDataBuilder();
+		peliculaTestDataBuilder.setId((long) 4);
+		
+		try {
+			actualizarPeliculaServicio.ejecutar(peliculaTestDataBuilder.build());
+			
+		} catch (Exception e) {
+			Assert.assertTrue(e.getMessage().contains(mensage));
+		}	
+
 		
 	}
 
