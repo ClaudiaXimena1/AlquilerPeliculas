@@ -42,9 +42,9 @@ public class PeliculaAdaptadorTest {
 		List<PeliculaDto> resultPeliculas = new ArrayList<PeliculaDto>();
 		resultPeliculas.add(peliculaDto);
 
-		List<PeliculaDto> peliculasGenero = peliculaAdaptador.findByNombre(nombre);
+		List<PeliculaDto> peliculasNombre = peliculaAdaptador.findByNombre(nombre);
 
-		assertEquals(resultPeliculas.get(0).getNombre(), peliculasGenero.get(0).getNombre());
+		assertEquals(resultPeliculas.get(0).getNombre(), peliculasNombre.get(0).getNombre());
 
 	}
 
