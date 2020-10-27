@@ -18,24 +18,24 @@ import co.com.ceiba.alquilerpeliculas.dominio.model.dto.PeliculaDto;
 @SpringBootTest
 @ActiveProfiles("test")
 public class PeliculaAdaptadorTest {
-	
+
 	@Autowired
 	PeliculaAdaptador peliculaAdaptador;
-	
+
 	@Test
 	public void findByGeneroTest() {
 		String genero = "Suspenso";
 		PeliculaDto peliculaDto = new PeliculaDto("Sombra en la Ciudad", "Suspenso", "1 hora 45 minutos");
 		List<PeliculaDto> resultPeliculas = new ArrayList<PeliculaDto>();
 		resultPeliculas.add(peliculaDto);
-		
+
 		List<PeliculaDto> peliculas = peliculaAdaptador.findByGenero(genero);
-		
+
 		assertEquals(resultPeliculas.get(0).getNombre(), peliculas.get(0).getNombre());
-		
+
 	}
-	
-	/*@Test
+
+	@Test
 	public void findByNombreTest() {
 		String nombre = "Batman";
 		PeliculaDto peliculaDto = new PeliculaDto("Batman", "Accion", "2 horas 15 minutos");
@@ -43,10 +43,9 @@ public class PeliculaAdaptadorTest {
 		resultPeliculas.add(peliculaDto);
 
 		List<PeliculaDto> peliculas = peliculaAdaptador.findByNombre(nombre);
-		
+
 		assertEquals(resultPeliculas.get(0).getNombre(), peliculas.get(0).getNombre());
-		assertEquals(resultPeliculas.get(0).getDuracion(), peliculas.get(0).getDuracion());
-		
-	}*/
+
+	}
 
 }
