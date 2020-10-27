@@ -35,7 +35,7 @@ public class PeliculaAdaptadorTest {
 		
 	}
 	
-	@Test
+	/*@Test
 	public void findByNombreTest() {
 		String nombre = "Batman";
 		PeliculaDto peliculaDto = new PeliculaDto("Batman", "Accion", "2 horas 15 minutos");
@@ -47,6 +47,6 @@ public class PeliculaAdaptadorTest {
 		assertEquals(resultPeliculas.get(0).getNombre(), peliculas.get(0).getNombre());
 		assertEquals(resultPeliculas.get(0).getDuracion(), peliculas.get(0).getDuracion());
 		
-	}
+	}*/
 
 }
