@@ -38,7 +38,7 @@ public class PeliculaAdaptadorTest {
 	@Test
 	public void findByNombreTest() {
 		String nombre = "Batman";
-		PeliculaDto peliculaDto = new PeliculaDto("Batman", "Acción", "2 horas 15 minutos");
+		PeliculaDto peliculaDto = new PeliculaDto("Batman", "Accion", "2 horas 15 minutos");
 		List<PeliculaDto> resultPeliculas = new ArrayList<PeliculaDto>();
 		resultPeliculas.add(peliculaDto);
 
