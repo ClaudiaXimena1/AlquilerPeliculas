@@ -38,13 +38,13 @@ public class PeliculaAdaptadorTest {
 	@Test
 	public void findByNombreTest() {
 		String nombre = "Batman";
-		PeliculaDto peliculaDto = new PeliculaDto("Batman", "Accion", "2 horas 15 minutos");
-		List<PeliculaDto> resultPeliculas = new ArrayList<PeliculaDto>();
-		resultPeliculas.add(peliculaDto);
+		PeliculaDto peliculaDto2 = new PeliculaDto("Batman", "Accion", "2 horas 15 minutos");
+		List<PeliculaDto> resultPeliculas2 = new ArrayList<PeliculaDto>();
+		resultPeliculas2.add(peliculaDto2);
 
-		List<PeliculaDto> peliculas = peliculaAdaptador.findByNombre(nombre);
+		List<PeliculaDto> peliculas2 = peliculaAdaptador.findByNombre(nombre);
 
-		assertEquals(resultPeliculas.get(0).getNombre(), peliculas.get(0).getNombre());
+		assertEquals(resultPeliculas2.get(0).getNombre(), peliculas2.get(0).getNombre());
 
 	}
 
