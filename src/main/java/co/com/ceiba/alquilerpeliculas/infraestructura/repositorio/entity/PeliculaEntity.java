@@ -7,17 +7,19 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
-@Data
+@Getter
+@Setter
 @Builder
 public class PeliculaEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "nombre")
 	private String nombre;
 	@Column(name = "genero")
@@ -26,11 +28,10 @@ public class PeliculaEntity {
 	private String duracion;
 
 	public PeliculaEntity() {
-		super();
+
 	}
 
 	public PeliculaEntity(Long id, String nombre, String genero, String duracion) {
-		super();
 		this.id = id;
 		this.nombre = nombre;
 		this.genero = genero;
