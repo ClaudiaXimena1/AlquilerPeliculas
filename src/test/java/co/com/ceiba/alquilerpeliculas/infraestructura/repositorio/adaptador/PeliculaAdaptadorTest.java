@@ -23,20 +23,6 @@ public class PeliculaAdaptadorTest {
 	PeliculaAdaptador peliculaAdaptador;
 
 	@Test
-	public void findByNombreTest() {
-		String nombre = "Batman";
-		PeliculaDto peliculasDto = new PeliculaDto("Batman", "Accion", "2 horas 15 minutos");
-		List<PeliculaDto> resultadoPeliculas = new ArrayList<PeliculaDto>();
-		resultadoPeliculas.add(peliculasDto);
-
-		List<PeliculaDto> peliculasNombre = peliculaAdaptador.findByNombre(nombre);
-		System.out.println(resultadoPeliculas.get(0).getNombre());
-		System.out.println(peliculasNombre.get(0).getNombre());
-		assertEquals(resultadoPeliculas.get(0).getNombre(), peliculasNombre.get(0).getNombre());
-
-	}
-
-	/*@Test
 	public void findByGeneroTest() {
 		String genero = "Suspenso";
 		PeliculaDto peliculaDto = new PeliculaDto("Sombra en la Ciudad", "Suspenso", "1 hora 45 minutos");
@@ -47,6 +33,19 @@ public class PeliculaAdaptadorTest {
 
 		assertEquals(resultPeliculas.get(0).getNombre(), peliculasGenero.get(0).getNombre());
 
-	}*/
+	}
+
+	@Test
+	public void findByNombreTest() {
+		String nombre = "Sombra en la Ciudad";
+		PeliculaDto peliculaDto = new PeliculaDto("Sombra en la Ciudad", "Suspenso", "1 hora 45 minutos");
+		List<PeliculaDto> resultPeliculas = new ArrayList<PeliculaDto>();
+		resultPeliculas.add(peliculaDto);
+
+		List<PeliculaDto> peliculasGenero = peliculaAdaptador.findByNombre(nombre);
+
+		assertEquals(resultPeliculas.get(0).getNombre(), peliculasGenero.get(0).getNombre());
+
+	}
 
 }
