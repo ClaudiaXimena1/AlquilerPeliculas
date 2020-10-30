@@ -10,7 +10,6 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Pelicula;
-import co.com.ceiba.alquilerpeliculas.dominio.testdatabuilder.PeliculaTestDataBuilder;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -24,8 +23,7 @@ public class ConsultarPorIdServicioTest {
 	public void ejecutarTest() {
 		Long id = (long) 3;
 		
-		Pelicula pelicula = new PeliculaTestDataBuilder().build();
-		pelicula.setNombre("Batman");
+		Pelicula pelicula = new Pelicula((long)3, "Batman","Accion","2 horas 15 minutos");
 		
 		Pelicula peliculaResul = consultarPorIdServicio.ejecutar(id);
 		

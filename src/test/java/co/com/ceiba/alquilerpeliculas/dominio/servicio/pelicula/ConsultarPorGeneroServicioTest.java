@@ -24,8 +24,8 @@ public class ConsultarPorGeneroServicioTest {
 
 	@Test
 	public void ejecutarTest() {
-		String genero = "Accion";
-		PeliculaDto peliculaDto = new PeliculaDto("Batman", "Accion", "2 horas 15 minutos");
+		String genero = "Suspenso";
+		PeliculaDto peliculaDto = new PeliculaDto("Sombra en la Ciudad", "Suspenso", "1 hora 45 minutos");
 		List<PeliculaDto> resultPeliculas = new ArrayList<PeliculaDto>();
 		resultPeliculas.add(peliculaDto);
 
