@@ -27,7 +27,7 @@ public class ConsultarPorIdServicioTest {
 		
 		Pelicula peliculaResul = consultarPorIdServicio.ejecutar(id);
 		
-		assertEquals(pelicula.getNombre(), peliculaResul.getNombre());
+		assertEquals(peliculaResul.getNombre(), pelicula.getNombre());
 		
 	}
 
