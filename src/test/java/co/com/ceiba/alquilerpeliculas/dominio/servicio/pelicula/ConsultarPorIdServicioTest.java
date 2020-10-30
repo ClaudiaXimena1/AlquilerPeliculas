@@ -23,11 +23,11 @@ public class ConsultarPorIdServicioTest {
 	public void ejecutarTest() {
 		Long id = (long) 3;
 		
-		Pelicula pelicula = new Pelicula((long)3, "Batman","Accion","2 horas 15 minutos");
+		//Pelicula pelicula = new Pelicula((long)3, "Batman","Accion","2 horas 15 minutos");
 		
 		Pelicula peliculaResul = consultarPorIdServicio.ejecutar(id);
 		
-		assertEquals(peliculaResul.getNombre(), pelicula.getNombre());
+		assertEquals("Batman", peliculaResul.getNombre());
 		
 	}
 
