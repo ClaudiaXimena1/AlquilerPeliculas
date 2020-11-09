@@ -11,43 +11,41 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.PeliculaDto;
+import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Pelicula;
 import co.com.ceiba.alquilerpeliculas.dominio.testdatabuilder.PeliculaTestDataBuilder;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
 public class CrearPeliculaServicioTest {
-	
+
 	@Autowired
 	CrearPeliculaServicio crearPeliculaServicio;
-	
+
 	@Test
 	public void validaNoExistePeliTest() {
 
 		PeliculaTestDataBuilder peliculaTestDataBuilder = new PeliculaTestDataBuilder();
-		peliculaTestDataBuilder.setId((long) 4);
-		
+
 		PeliculaDto peliculaDto = crearPeliculaServicio.ejecutar(peliculaTestDataBuilder.build());
-		
+
 		assertEquals("Titanic", peliculaDto.getNombre());
-		
+
 	}
-	
+
 	@Test
 	public void validaExistePeliTest() {
-		
+
 		final String mensage = "La pelicula ya existe en el sistema";
-		PeliculaTestDataBuilder peliculaTestDataBuilder = new PeliculaTestDataBuilder();
-		peliculaTestDataBuilder.setId((long) 3);
-		
+		Pelicula pelicula = new Pelicula(null, "Batman", "Accion", "2 horas 15 minutos");
+
 		try {
-			crearPeliculaServicio.ejecutar(peliculaTestDataBuilder.build());
-			
+			crearPeliculaServicio.ejecutar(pelicula);
+
 		} catch (Exception e) {
 			Assert.assertTrue(e.getMessage().contains(mensage));
-		}	
+		}
 
-		
 	}
 
 }

@@ -4,6 +4,12 @@ import java.util.Date;
 
 public class Cliente {
 
+	private static final String LA_IDENTIFICACION_ES_UN_DATO_OBLIGATORIO = "La Identificacion es un dato obligatorio.";
+	private static final String EL_NOMBRE_ES_UN_DATO_OBLIGATORIO = "El Nombre es un dato obligatorio.";
+	private static final String EL_APELLIDO_ES_UN_DATO_OBLIGATORIO = "El Apellido es un dato obligatorio.";
+	private static final String LA_DIRECCION_ES_UN_DATO_OBLIGATORIO = "La Direccion es un dato obligatorio.";
+	private static final String EL_TELEFONO_ES_UN_DATO_OBLIGATORIO = "Por lo menos un telefono es obligatorio.";
+	
 	private Long id;
 	private String identificacion;
 	private String nombres;
@@ -18,14 +24,21 @@ public class Cliente {
 	}
 
 	public Cliente(String identificacion, String nombres, String apellidos, String direccion, String telefonoFijo,
-			String telefonoMovil, Date fechaRegistro) {
+			String telefonoMovil) {
+		
+		ValidadorAtributos.validarAtributos(identificacion, LA_IDENTIFICACION_ES_UN_DATO_OBLIGATORIO);
+		ValidadorAtributos.validarAtributos(nombres, EL_NOMBRE_ES_UN_DATO_OBLIGATORIO);
+		ValidadorAtributos.validarAtributos(apellidos, EL_APELLIDO_ES_UN_DATO_OBLIGATORIO);
+		ValidadorAtributos.validarAtributos(direccion, LA_DIRECCION_ES_UN_DATO_OBLIGATORIO);
+		ValidadorAtributos.validarAtributos(telefonoFijo, EL_TELEFONO_ES_UN_DATO_OBLIGATORIO);
+		
 		this.identificacion = identificacion;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
 		this.direccion = direccion;
 		this.telefonoFijo = telefonoFijo;
 		this.telefonoMovil = telefonoMovil;
-		this.fechaRegistro = (Date) fechaRegistro.clone();
+		this.fechaRegistro = new Date();
 	}
 
 	public Long getId() {

@@ -1,11 +1,18 @@
 package co.com.ceiba.alquilerpeliculas.infraestructura.repositorio.entity.factory;
 
+import co.com.ceiba.alquilerpeliculas.dominio.model.dto.ClienteDto;
 import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Cliente;
 import co.com.ceiba.alquilerpeliculas.infraestructura.repositorio.entity.ClienteEntity;
 
 public final class ClienteFactory {
 
 	private ClienteFactory() {
+
+	}
+	
+	public static ClienteDto toModel(ClienteEntity clienteEntity) {
+		return new ClienteDto(clienteEntity.getIdentificacion(), clienteEntity.getNombres(), clienteEntity.getApellidos(),
+				clienteEntity.getDireccion(), clienteEntity.getTelefonoFijo(), clienteEntity.getTelefonoMovil());
 
 	}
 

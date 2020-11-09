@@ -10,7 +10,6 @@ public class PeliculaTestDataBuilder {
 	private String duracion;
 	
 	public PeliculaTestDataBuilder() {
-		this.id = (long) 3;
 		this.nombre = "Titanic";
 		this.genero = "Drama";
 		this.duracion = "3 horas 50 minutos";

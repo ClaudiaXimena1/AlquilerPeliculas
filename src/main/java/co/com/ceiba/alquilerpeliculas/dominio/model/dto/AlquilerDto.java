@@ -4,8 +4,6 @@ import java.util.Date;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Cliente;
-import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Pelicula;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -18,9 +16,9 @@ public class AlquilerDto {
 	private Double valor;
 
 	@Autowired
-	private Cliente cliente;
+	private ClienteDto clienteDto;
 
 	@Autowired
-	private Pelicula pelicula;	
+	private PeliculaDto peliculaDto;	
 
 }

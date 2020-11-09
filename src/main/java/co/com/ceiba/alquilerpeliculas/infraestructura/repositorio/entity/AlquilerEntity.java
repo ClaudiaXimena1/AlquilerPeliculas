@@ -2,11 +2,12 @@ package co.com.ceiba.alquilerpeliculas.infraestructura.repositorio.entity;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 import lombok.AllArgsConstructor;
@@ -21,21 +22,27 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ClienteEntity {
-
+public class AlquilerEntity {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	private String identificacion;
-	private String nombres;
-	private String apellidos;
-	private String direccion;
-	private String telefonoFijo;
-	private String telefonoMovil;
+	
+	@Column(name = "fecha_Alquiler")
+	private Date fechaAlquiler;
+	@Column(name = "fecha_Entrega")
+	private Date fechaEntrega;
+	@Column(name = "valor")
+	private Double valor;
+	@Column(name = "fecha_Registro")
 	private Date fechaRegistro;
-
-	@OneToOne(mappedBy = "clienteEntity", cascade = CascadeType.ALL)
-	private AlquilerEntity alquilerEntity;
+	
+	@OneToOne
+	@JoinColumn(name= "id_Cliente")
+	private ClienteEntity clienteEntity;
+	
+	@OneToOne
+	@JoinColumn(name = "id_Pelicula")
+	private PeliculaEntity peliculaEntity;
 
 }
