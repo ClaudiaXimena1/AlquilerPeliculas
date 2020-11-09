@@ -25,6 +25,7 @@ public class ActualizarPeliculaServicioTest {
 	public void validaExistePeliTest() {
 
 		PeliculaTestDataBuilder peliculaTestDataBuilder = new PeliculaTestDataBuilder();
+		peliculaTestDataBuilder.setId((long) 3);
 		
 		PeliculaDto peliculaDto = actualizarPeliculaServicio.ejecutar(peliculaTestDataBuilder.build());
 		
