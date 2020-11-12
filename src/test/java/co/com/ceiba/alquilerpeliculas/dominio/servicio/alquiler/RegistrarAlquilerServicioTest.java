@@ -72,7 +72,7 @@ public class RegistrarAlquilerServicioTest {
 	public void validaNoExisteClienteTest() {
 		final String mensage = "El Cliente no existe en el sistema.";
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
-		Cliente cliente = new Cliente(null, "1074925262", "Juan Sebastián", "Lozada Bustamante", "Calle 2B con 81",
+		Cliente cliente = new Cliente(null, "1074925262", "Juan Sebastian", "Lozada Bustamante", "Calle 2B con 81",
 				"4888686", "3188213131");
 
 		try {
