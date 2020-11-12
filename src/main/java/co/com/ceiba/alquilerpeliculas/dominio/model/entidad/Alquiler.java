@@ -6,6 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class Alquiler {
 
+	private static final String FECHA_ALQUILER_ES_UN_DATO_OBLIGATORIO = "La Fecha de Alquiler es un dato obligatorio.";
+	private static final String FECHA_ENTREGA_ES_UN_DATO_OBLIGATORIO = "La Fecha de Entrega es un dato obligatorio.";
+	private static final String FECHA_ENTREGA_MENOR_FECHA_ALQUILER = "La Fecha de Entrega debe ser mayor a la Fecha de Alquiler.";
+	
 	private Long id;
 	private Date fechaAlquiler;
 	private Date fechaEntrega;
@@ -22,16 +26,21 @@ public class Alquiler {
 
 	}
 
-	public Alquiler(Long id, Date fechaAlquiler, Date fechaEntrega, Double valor, Date fechaRegistro, Cliente cliente,
-			Pelicula pelicula) {
-		super();
-		this.id = id;
-		this.fechaAlquiler = (Date) fechaAlquiler.clone();
-		this.fechaEntrega = (Date) fechaEntrega.clone();
+	public Alquiler(Date fechaAlquiler, Date fechaEntrega, Double valor, Cliente cliente, Pelicula pelicula) {
+		ValidadorAtributos.validarAtributos(fechaAlquiler, FECHA_ALQUILER_ES_UN_DATO_OBLIGATORIO);
+		ValidadorAtributos.validarAtributos(fechaEntrega, FECHA_ENTREGA_ES_UN_DATO_OBLIGATORIO);
+		ValidadorAtributos.validarFechas(fechaAlquiler, fechaEntrega, FECHA_ENTREGA_MENOR_FECHA_ALQUILER);
+
+		this.fechaAlquiler = fechaAlquiler;
+		this.fechaEntrega = fechaEntrega;
 		this.valor = valor;
-		this.fechaRegistro = (Date) fechaRegistro.clone();
+		this.fechaRegistro = new Date();
 		this.cliente = cliente;
 		this.pelicula = pelicula;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public Long getId() {
@@ -39,19 +48,19 @@ public class Alquiler {
 	}
 
 	public Date getFechaAlquiler() {
-		return (Date) fechaAlquiler.clone();
+		return fechaAlquiler;
 	}
 
 	public void setFechaAlquiler(Date fechaAlquiler) {
-		this.fechaAlquiler = (Date) fechaAlquiler.clone();
+		this.fechaAlquiler = fechaAlquiler;
 	}
 
 	public Date getFechaEntrega() {
-		return (Date) fechaEntrega.clone();
+		return fechaEntrega;
 	}
 
 	public void setFechaEntrega(Date fechaEntrega) {
-		this.fechaEntrega = (Date) fechaEntrega.clone();
+		this.fechaEntrega = fechaEntrega;
 	}
 
 	public Double getValor() {
@@ -63,11 +72,11 @@ public class Alquiler {
 	}
 
 	public Date getFechaRegistro() {
-		return (Date) fechaRegistro.clone();
+		return fechaRegistro;
 	}
 
 	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = (Date) fechaRegistro.clone();
+		this.fechaRegistro = fechaRegistro;
 	}
 
 	public Cliente getCliente() {

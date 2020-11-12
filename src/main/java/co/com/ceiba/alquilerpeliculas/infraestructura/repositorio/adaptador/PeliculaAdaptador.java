@@ -82,4 +82,12 @@ public class PeliculaAdaptador implements PeliculaRepositorio {
 
 	}
 
+	@Override
+	public Long findIdByNombre(String nombre) {
+		Long id;
+		id = peliculaRepositorioBd.findIdByNombre(nombre);
+		
+		return id;
+	}
+
 }

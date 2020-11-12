@@ -9,10 +9,11 @@ public final class ClienteFactory {
 	private ClienteFactory() {
 
 	}
-	
+
 	public static ClienteDto toModel(ClienteEntity clienteEntity) {
-		return new ClienteDto(clienteEntity.getIdentificacion(), clienteEntity.getNombres(), clienteEntity.getApellidos(),
-				clienteEntity.getDireccion(), clienteEntity.getTelefonoFijo(), clienteEntity.getTelefonoMovil());
+		return new ClienteDto(clienteEntity.getIdentificacion(), clienteEntity.getNombres(),
+				clienteEntity.getApellidos(), clienteEntity.getDireccion(), clienteEntity.getTelefonoFijo(),
+				clienteEntity.getTelefonoMovil());
 
 	}
 
@@ -23,5 +24,14 @@ public final class ClienteFactory {
 				.fechaRegistro(cliente.getFechaRegistro()).build();
 	}
 
-}
+	public static Cliente toEntidad(ClienteDto clienteDto) {
+		return new Cliente(null, clienteDto.getIdentificacion(), clienteDto.getNombres(), clienteDto.getApellidos(),
+				clienteDto.getDireccion(), clienteDto.getTelefonoFijo(), clienteDto.getTelefonoMovil());
+	}
+	
+	public static Cliente toEntidad(ClienteEntity clienteEntity) {
+		return new Cliente(clienteEntity.getId(), clienteEntity.getIdentificacion(), clienteEntity.getNombres(), clienteEntity.getApellidos(),
+				clienteEntity.getDireccion(), clienteEntity.getTelefonoFijo(), clienteEntity.getTelefonoMovil());
+	}
 
+}

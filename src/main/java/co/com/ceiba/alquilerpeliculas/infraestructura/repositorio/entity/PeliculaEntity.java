@@ -1,11 +1,13 @@
 package co.com.ceiba.alquilerpeliculas.infraestructura.repositorio.entity;
 
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -25,14 +27,14 @@ public class PeliculaEntity {
 	private String genero;
 	private String duracion;
 	
-	@OneToOne(mappedBy = "peliculaEntity", cascade = CascadeType.ALL)
-	private AlquilerEntity alquilerEntity;
+	@OneToMany(mappedBy = "peliculaEntity", cascade = CascadeType.ALL)
+	private List<AlquilerEntity> alquilerEntity;
 
 	public PeliculaEntity() {
 
 	}
 
-	public PeliculaEntity(Long id, String nombre, String genero, String duracion, AlquilerEntity alquilerEntity) {
+	public PeliculaEntity(Long id, String nombre, String genero, String duracion, List<AlquilerEntity> alquilerEntity) {
 		this.id = id;
 		this.nombre = nombre;
 		this.genero = genero;

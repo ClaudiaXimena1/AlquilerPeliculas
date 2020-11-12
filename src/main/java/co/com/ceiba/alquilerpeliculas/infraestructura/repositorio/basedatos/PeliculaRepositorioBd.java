@@ -15,5 +15,8 @@ public interface PeliculaRepositorioBd extends JpaRepository<PeliculaEntity, Lon
 	
 	@Query("Select p from PeliculaEntity p where p.nombre LIKE %:nombre%")
 	public List<PeliculaEntity> findByNombre(@Param("nombre") String nombre);
+	
+	@Query("Select p.id from PeliculaEntity p where p.nombre =:nombre")
+	public Long findIdByNombre(@Param("nombre") String nombre);
 
 }

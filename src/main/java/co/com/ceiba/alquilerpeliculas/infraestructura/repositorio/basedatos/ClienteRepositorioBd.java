@@ -7,8 +7,11 @@ import org.springframework.data.repository.query.Param;
 import co.com.ceiba.alquilerpeliculas.infraestructura.repositorio.entity.ClienteEntity;
 
 public interface ClienteRepositorioBd extends JpaRepository<ClienteEntity, Long> {
-	
+
 	@Query("Select p from ClienteEntity p where p.identificacion =:identificacion")
 	public ClienteEntity findByIdentificacion(@Param("identificacion") String identificacion);
+
+	@Query("Select p.id from ClienteEntity p where p.identificacion =:identificacion")
+	public Long findIdByIdentificacion(@Param("identificacion") String identificacion);
 
 }

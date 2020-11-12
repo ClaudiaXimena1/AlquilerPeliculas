@@ -37,7 +37,7 @@ public class CrearClienteServicioTest {
 	public void validaExisteClienteTest() {
 
 		final String mensage = "El Cliente ya existe en el sistema";
-		Cliente cliente = new Cliente("31274274", "Argenis", "Gomez Grajales", "Calle 8 con 7", "2222222", "3175181818");
+		Cliente cliente = new Cliente(null, "31274274", "Argenis", "Gomez Grajales", "Calle 8 con 7", "2222222", "3175181818");
 
 		try {
 			crearClienteServicio.ejecutar(cliente);

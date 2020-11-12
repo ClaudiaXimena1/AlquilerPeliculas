@@ -3,7 +3,8 @@ package co.com.ceiba.alquilerpeliculas.dominio.testdatabuilder;
 import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Cliente;
 
 public class ClienteTestDataBuilder {
-
+	
+	private Long id;
 	private String identificacion;
 	private String nombres;
 	private String apellidos;
@@ -12,6 +13,7 @@ public class ClienteTestDataBuilder {
 	private String telefonoMovil;
 
 	public ClienteTestDataBuilder() {
+		this.id = null;
 		this.identificacion = "14992992";
 		this.nombres = "Samuel";
 		this.apellidos = "Bustamante Grisales";
@@ -51,7 +53,7 @@ public class ClienteTestDataBuilder {
 	}
 
 	public Cliente build() {
-		return new Cliente(identificacion, nombres, apellidos, direccion, telefonoFijo, telefonoMovil);
+		return new Cliente(id, identificacion, nombres, apellidos, direccion, telefonoFijo, telefonoMovil);
 	}
 
 }

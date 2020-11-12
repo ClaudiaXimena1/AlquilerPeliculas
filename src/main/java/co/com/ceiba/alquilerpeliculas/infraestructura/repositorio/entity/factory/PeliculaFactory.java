@@ -16,8 +16,12 @@ public final class PeliculaFactory {
 	}
 
 	public static PeliculaEntity toEntity(Pelicula pelicula) {
-		return PeliculaEntity.builder().id(pelicula.getId()).nombre(pelicula.getNombre()).genero(pelicula.getGenero()).duracion(pelicula.getDuracion())
-				.build();
+		return PeliculaEntity.builder().id(pelicula.getId()).nombre(pelicula.getNombre()).genero(pelicula.getGenero())
+				.duracion(pelicula.getDuracion()).build();
+	}
+
+	public static Pelicula toEntidad(PeliculaDto peliculaDto) {
+		return new Pelicula(null, peliculaDto.getNombre(), peliculaDto.getGenero(), peliculaDto.getDuracion());
 	}
 
 }

@@ -16,7 +16,7 @@ public class CrearClienteManejador {
 	}
 
 	public ClienteDto ejecutar(ClienteDto clienteDto) {
-		Cliente cliente = new Cliente(clienteDto.getIdentificacion(), clienteDto.getNombres(),
+		Cliente cliente = new Cliente(null, clienteDto.getIdentificacion(), clienteDto.getNombres(),
 				clienteDto.getApellidos(), clienteDto.getDireccion(), clienteDto.getTelefonoFijo(),
 				clienteDto.getTelefonoMovil());
 

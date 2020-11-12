@@ -23,7 +23,7 @@ public class Cliente {
 
 	}
 
-	public Cliente(String identificacion, String nombres, String apellidos, String direccion, String telefonoFijo,
+	public Cliente(Long id, String identificacion, String nombres, String apellidos, String direccion, String telefonoFijo,
 			String telefonoMovil) {
 		
 		ValidadorAtributos.validarAtributos(identificacion, LA_IDENTIFICACION_ES_UN_DATO_OBLIGATORIO);
@@ -32,6 +32,7 @@ public class Cliente {
 		ValidadorAtributos.validarAtributos(direccion, LA_DIRECCION_ES_UN_DATO_OBLIGATORIO);
 		ValidadorAtributos.validarAtributos(telefonoFijo, EL_TELEFONO_ES_UN_DATO_OBLIGATORIO);
 		
+		this.id = id;
 		this.identificacion = identificacion;
 		this.nombres = nombres;
 		this.apellidos = apellidos;
@@ -43,6 +44,10 @@ public class Cliente {
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getIdentificacion() {

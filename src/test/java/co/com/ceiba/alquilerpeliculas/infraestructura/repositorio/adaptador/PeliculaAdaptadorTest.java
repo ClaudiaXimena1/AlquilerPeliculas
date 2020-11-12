@@ -13,6 +13,7 @@ import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.PeliculaDto;
+import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Pelicula;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -46,6 +47,26 @@ public class PeliculaAdaptadorTest {
 
 		assertEquals(resultPeliculas.get(0).getNombre(), peliculasNombre.get(0).getNombre());
 
+	}
+
+	@Test
+	public void findByIdTest() {
+		Long id = (long) 2;
+
+		Pelicula pelicula = peliculaAdaptador.findById(id);
+
+		assertEquals("Sombra en la Ciudad", pelicula.getNombre());
+
+	}
+	
+	@Test
+	public void findIdByNombreTest() {
+		String nombre = "Batman";
+		
+		Long id = peliculaAdaptador.findIdByNombre(nombre);
+		
+		assertEquals(3, id);
+		
 	}
 
 }

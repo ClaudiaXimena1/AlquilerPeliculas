@@ -6,8 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 public class AlquilerDto {
 
@@ -19,6 +21,6 @@ public class AlquilerDto {
 	private ClienteDto clienteDto;
 
 	@Autowired
-	private PeliculaDto peliculaDto;	
+	private PeliculaDto peliculaDto;
 
 }

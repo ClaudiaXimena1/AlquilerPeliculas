@@ -8,5 +8,9 @@ public interface ClienteRepositorio {
 	public ClienteDto crearCliente(Cliente cliente);
 	
 	public ClienteDto findByIdentificacion(String identificacion);
+	
+	public Long findIdByIdentificacion(String identificacion);
+	
+	public Cliente findById(Long id);
 
 }

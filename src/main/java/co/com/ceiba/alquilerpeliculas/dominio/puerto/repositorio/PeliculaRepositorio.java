@@ -14,5 +14,7 @@ public interface PeliculaRepositorio {
 	public List<PeliculaDto> findByNombre(String nombre);
 	
 	public Pelicula findById(Long id);
+	
+	public Long findIdByNombre(String nombre);
 
 }
