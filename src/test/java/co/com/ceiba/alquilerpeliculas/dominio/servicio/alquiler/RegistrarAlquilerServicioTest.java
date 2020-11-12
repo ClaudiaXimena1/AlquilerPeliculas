@@ -8,7 +8,6 @@ import java.text.SimpleDateFormat;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.junit.jupiter.api.Order;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -31,7 +30,6 @@ public class RegistrarAlquilerServicioTest {
 	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 	@Test
-	@Order(value = 1)
 	public void validaExistePeliTest() {
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
 
@@ -51,7 +49,6 @@ public class RegistrarAlquilerServicioTest {
 	}
 
 	@Test
-	@Order(value = 2)
 	public void validaNoExistePeliTest() {
 		final String mensage = "La Pelicula no existe en el sistema.";
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
@@ -72,7 +69,6 @@ public class RegistrarAlquilerServicioTest {
 	}
 
 	@Test
-	@Order(value = 3)
 	public void validaNoExisteClienteTest() {
 		final String mensage = "El Cliente no existe en el sistema.";
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
@@ -94,7 +90,6 @@ public class RegistrarAlquilerServicioTest {
 	}
 
 	@Test
-	@Order(value = 4)
 	public void validaExisteClienteTest() {
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
 		Pelicula pelicula = new Pelicula(null, "Sombra en la Ciudad", "Suspenso", "1 hora 45 minutos");
@@ -116,7 +111,6 @@ public class RegistrarAlquilerServicioTest {
 	}
 
 	@Test
-	@Order(value = 5)
 	public void setFechaAlquilerFindeTest() {
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
 
@@ -137,7 +131,6 @@ public class RegistrarAlquilerServicioTest {
 	}
 	
 	@Test
-	@Order(value = 6)
 	public void setFechaEntregaFindeTest() {
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
 
@@ -158,7 +151,6 @@ public class RegistrarAlquilerServicioTest {
 	}
 	
 	@Test
-	@Order(value = 7)
 	public void calcularValorAlquilerTest() {		
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
 
@@ -178,7 +170,6 @@ public class RegistrarAlquilerServicioTest {
 	}
 	
 	@Test
-	@Order(value = 8)
 	public void calcularValorAlquilerRecargoTest() {		
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
 

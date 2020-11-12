@@ -31,8 +31,8 @@ public class Alquiler {
 		ValidadorAtributos.validarAtributos(fechaEntrega, FECHA_ENTREGA_ES_UN_DATO_OBLIGATORIO);
 		ValidadorAtributos.validarFechas(fechaAlquiler, fechaEntrega, FECHA_ENTREGA_MENOR_FECHA_ALQUILER);
 
-		this.fechaAlquiler = fechaAlquiler;
-		this.fechaEntrega = fechaEntrega;
+		this.fechaAlquiler = (Date) fechaAlquiler.clone();
+		this.fechaEntrega = (Date) fechaEntrega.clone();
 		this.valor = valor;
 		this.fechaRegistro = new Date();
 		this.cliente = cliente;
@@ -48,19 +48,19 @@ public class Alquiler {
 	}
 
 	public Date getFechaAlquiler() {
-		return fechaAlquiler;
+		return (Date) fechaAlquiler.clone();
 	}
 
 	public void setFechaAlquiler(Date fechaAlquiler) {
-		this.fechaAlquiler = fechaAlquiler;
+		this.fechaAlquiler = (Date) fechaAlquiler.clone();
 	}
 
 	public Date getFechaEntrega() {
-		return fechaEntrega;
+		return (Date) fechaEntrega.clone();
 	}
 
 	public void setFechaEntrega(Date fechaEntrega) {
-		this.fechaEntrega = fechaEntrega;
+		this.fechaEntrega = (Date) fechaEntrega.clone();
 	}
 
 	public Double getValor() {
@@ -72,11 +72,11 @@ public class Alquiler {
 	}
 
 	public Date getFechaRegistro() {
-		return fechaRegistro;
+		return (Date) fechaRegistro.clone();
 	}
 
 	public void setFechaRegistro(Date fechaRegistro) {
-		this.fechaRegistro = fechaRegistro;
+		this.fechaRegistro = (Date) fechaRegistro.clone();
 	}
 
 	public Cliente getCliente() {
