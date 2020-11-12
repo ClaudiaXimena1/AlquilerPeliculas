@@ -9,13 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Builder
 public class PeliculaEntity {
 
@@ -26,20 +30,8 @@ public class PeliculaEntity {
 	private String nombre;
 	private String genero;
 	private String duracion;
-	
+
 	@OneToMany(mappedBy = "peliculaEntity", cascade = CascadeType.ALL)
 	private List<AlquilerEntity> alquilerEntity;
-
-	public PeliculaEntity() {
-
-	}
-
-	public PeliculaEntity(Long id, String nombre, String genero, String duracion, List<AlquilerEntity> alquilerEntity) {
-		this.id = id;
-		this.nombre = nombre;
-		this.genero = genero;
-		this.duracion = duracion;
-		this.alquilerEntity = alquilerEntity;
-	}
 
 }
