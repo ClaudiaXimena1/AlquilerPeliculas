@@ -61,11 +61,11 @@ public class PeliculaAdaptadorTest {
 	
 	@Test
 	public void findIdByNombreTest() {
-		String nombre = "Batman";
+		String nombre = "Spiderman";
 		
 		Long id = peliculaAdaptador.findIdByNombre(nombre);
 		
-		assertEquals(3, id);
+		assertEquals(10, id);
 		
 	}
 

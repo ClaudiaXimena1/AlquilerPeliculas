@@ -26,10 +26,11 @@ public class CrearPeliculaServicioTest {
 	public void validaNoExistePeliTest() {
 
 		PeliculaTestDataBuilder peliculaTestDataBuilder = new PeliculaTestDataBuilder();
+		peliculaTestDataBuilder.setNombre("Salvando al Soldado Ryan");
 
 		PeliculaDto peliculaDto = crearPeliculaServicio.ejecutar(peliculaTestDataBuilder.build());
 
-		assertEquals("Titanic", peliculaDto.getNombre());
+		assertEquals("Salvando al Soldado Ryan", peliculaDto.getNombre());
 
 	}
 
