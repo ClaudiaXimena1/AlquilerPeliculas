@@ -36,6 +36,7 @@ public class ActualizarPeliculaServicioTest {
 
 		PeliculaTestDataBuilder peliculaTestDataBuilder = new PeliculaTestDataBuilder();
 		peliculaTestDataBuilder.setId((long) 3);
+		peliculaTestDataBuilder.setNombre("Batman");
 		
 		PeliculaDto peliculaDto = actualizarPeliculaServicio.ejecutar(peliculaTestDataBuilder.build());
 		
@@ -59,7 +60,7 @@ public class ActualizarPeliculaServicioTest {
 		
 		final String mensage = "La pelicula no existe en el sistema";
 		PeliculaTestDataBuilder peliculaTestDataBuilder = new PeliculaTestDataBuilder();
-		peliculaTestDataBuilder.setId((long) 4);
+		peliculaTestDataBuilder.setId((long) 12);
 		
 		try {
 			actualizarPeliculaServicio.ejecutar(peliculaTestDataBuilder.build());

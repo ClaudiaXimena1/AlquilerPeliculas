@@ -31,7 +31,7 @@ import co.com.ceiba.alquilerpeliculas.aplicacion.manejador.pelicula.ConsultarPor
 import co.com.ceiba.alquilerpeliculas.aplicacion.manejador.pelicula.CrearPeliculaManejador;
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.PeliculaDto;
 import co.com.ceiba.alquilerpeliculas.dominio.puerto.repositorio.PeliculaRepositorio;
-import co.com.ceiba.alquilerpeliculas.infraestructura.testdatabuilder.PeliculaTestDataBuilder;
+import co.com.ceiba.alquilerpeliculas.infraestructura.testdatabuilder.PeliculaTestDataBuilder2;
 
 @RunWith(SpringRunner.class)
 @WebMvcTest(PeliculaControlador.class)
@@ -64,7 +64,7 @@ public class PeliculaControladorTest {
 	@Test
 	public void crearPeliculaTest() {
 
-		PeliculaDto peliculaDto = new PeliculaTestDataBuilder().build();
+		PeliculaDto peliculaDto = new PeliculaTestDataBuilder2().build();
 
 		try {
 			mocMvc.perform(MockMvcRequestBuilders.post("/gestion-peliculas/peliculas").content(asJsonString(peliculaDto))
