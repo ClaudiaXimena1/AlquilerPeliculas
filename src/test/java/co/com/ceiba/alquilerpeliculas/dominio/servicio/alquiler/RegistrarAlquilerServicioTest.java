@@ -32,15 +32,17 @@ public class RegistrarAlquilerServicioTest {
 	@Test
 	public void validaExistePeliTest() {
 		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
-
+		Pelicula pelicula = new Pelicula(null, "Orgullo y Prejuicio", "Romance", "2 horas 15 minutos");
+		
 		try {
-
+			
+			alquilerTestDataBuilder.setPelicula(pelicula);
 			alquilerTestDataBuilder.setFechaAlquiler(dateFormat.parse("2020-11-12"));
 			alquilerTestDataBuilder.setFechaEntrega(dateFormat.parse("2020-11-13"));
 
 			AlquilerDto alquilerDto = registrarAlquilerServicio.ejecutar(alquilerTestDataBuilder.build());
 
-			assertEquals("Batman", alquilerDto.getPeliculaDto().getNombre());
+			assertEquals("Orgullo y Prejuicio", alquilerDto.getPeliculaDto().getNombre());
 
 		} catch (ParseException e) {
 			e.printStackTrace();
