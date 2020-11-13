@@ -25,4 +25,9 @@ public class AlquilerAdaptador implements AlquilerRepositorio {
 		return AlquilerFactory.toModel(alquilerRepositorioBd.save(alquilerEntity));
 	}
 
+	@Override
+	public Double calcularTotalAlquiler(String identificacion, String fechaAlquiler) {
+		return alquilerRepositorioBd.calcularTotalAlquiler(identificacion, fechaAlquiler);
+	}
+	
 }

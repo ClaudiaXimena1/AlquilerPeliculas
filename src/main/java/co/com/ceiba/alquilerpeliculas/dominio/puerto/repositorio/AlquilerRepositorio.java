@@ -6,5 +6,7 @@ import co.com.ceiba.alquilerpeliculas.dominio.model.entidad.Alquiler;
 public interface AlquilerRepositorio {
 	
 	public AlquilerDto registrarAlquiler(Alquiler alquiler);
+	
+	public Double calcularTotalAlquiler(String identificacion, String fechaAlquiler);
 
 }

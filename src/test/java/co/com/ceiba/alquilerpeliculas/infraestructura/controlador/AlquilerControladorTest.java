@@ -1,5 +1,8 @@
 package co.com.ceiba.alquilerpeliculas.infraestructura.controlador;
 
+import static org.mockito.Mockito.when;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import org.junit.Test;
@@ -14,6 +17,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import co.com.ceiba.alquilerpeliculas.aplicacion.manejador.alquiler.ConsultarTotalAlquilerManejador;
 import co.com.ceiba.alquilerpeliculas.aplicacion.manejador.alquiler.RegistrarAlquilerManejador;
 import co.com.ceiba.alquilerpeliculas.aplicacion.manejador.cliente.CrearClienteManejador;
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.ClienteDto;
@@ -29,6 +33,9 @@ public class AlquilerControladorTest {
 
 	@MockBean
 	private RegistrarAlquilerManejador registrarAlquilerManejador;
+	
+	@MockBean
+	private ConsultarTotalAlquilerManejador consultarTotalAlquilerManejador;
 
 	@MockBean
 	private CrearClienteManejador crearClienteManejador;
@@ -61,6 +68,22 @@ public class AlquilerControladorTest {
 		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
+	}
+	
+	@Test
+	public void calculaTotalAlquilerTest() {
+		
+		Double valor = 14000.00;
+		
+		when(this.consultarTotalAlquilerManejador.ejecutar("94534534", "2020-11-13")).thenReturn(valor);
+
+		try {
+			mocMvc.perform(post("/gestion-alquiler/alquiler/94534534/2020-11-13"))
+					.andExpect(content().contentType(MediaType.APPLICATION_JSON)).andExpect(status().isOk());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 }

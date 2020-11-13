@@ -7,6 +7,7 @@ import org.springframework.context.annotation.Configuration;
 import co.com.ceiba.alquilerpeliculas.dominio.puerto.repositorio.AlquilerRepositorio;
 import co.com.ceiba.alquilerpeliculas.dominio.puerto.repositorio.ClienteRepositorio;
 import co.com.ceiba.alquilerpeliculas.dominio.puerto.repositorio.PeliculaRepositorio;
+import co.com.ceiba.alquilerpeliculas.dominio.servicio.alquiler.ConsultarValorTotalServicio;
 import co.com.ceiba.alquilerpeliculas.dominio.servicio.alquiler.RegistrarAlquilerServicio;
 import co.com.ceiba.alquilerpeliculas.dominio.servicio.cliente.CrearClienteServicio;
 import co.com.ceiba.alquilerpeliculas.dominio.servicio.pelicula.ActualizarPeliculaServicio;
@@ -57,6 +58,11 @@ public class ConfiguracionBean {
 	@Bean
 	public CrearClienteServicio getClienteServicio(ClienteRepositorio clienteRepositorio) {
 		return new CrearClienteServicio(clienteRepositorio);
+	}
+	
+	@Bean
+	public ConsultarValorTotalServicio getConsultarTotalServicio(AlquilerRepositorio alquilerRepositorio) {
+		return new ConsultarValorTotalServicio(alquilerRepositorio);
 	}
 
 }
