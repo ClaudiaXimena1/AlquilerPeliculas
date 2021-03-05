@@ -15,7 +15,7 @@ public class ClienteTest {
 	@Test
 	public void validarIdentificacionReqTest() {
 		
-		final String mensage = "La Identificacion es un dato obligatorio.";
+		final String mensage = "La Identificacion del Cliente es un dato obligatorio.";
 		
 		ClienteTestDataBuilder clienteTestDataBuilder = new ClienteTestDataBuilder();
 		clienteTestDataBuilder.setIdentificacion(null);
@@ -27,7 +27,7 @@ public class ClienteTest {
 	@Test
 	public void validarDireccionReqTest() {
 		
-		final String mensage = "La Direccion es un dato obligatorio.";
+		final String mensage = "La Direccion del Cliente es un dato obligatorio.";
 		
 		ClienteTestDataBuilder clienteTestDataBuilder = new ClienteTestDataBuilder();
 		clienteTestDataBuilder.setDireccion(null);
