@@ -1,6 +1,5 @@
 package co.com.ceiba.alquilerpeliculas.infraestructura.controlador;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +18,8 @@ public class AlquilerControlador {
 
 	private final RegistrarAlquilerManejador registrarAlquilerManejador;
 	private final ConsultarTotalAlquilerManejador consultarTotalAlquilerManejador;
+	private static final String ALQUILER_REGISTRADO = "Alquiler Registrado Correctamente.";
 
-	@Autowired
 	public AlquilerControlador(RegistrarAlquilerManejador registrarAlquilerManejador,
 			ConsultarTotalAlquilerManejador consultarTotalAlquilerManejador) {
 		this.registrarAlquilerManejador = registrarAlquilerManejador;
@@ -29,8 +28,10 @@ public class AlquilerControlador {
 	}
 
 	@PostMapping("/alquiler")
-	public ResponseEntity<AlquilerDto> registrarAlquiler(@RequestBody AlquilerDto alquilerDto) {
-		return new ResponseEntity<>(registrarAlquilerManejador.ejecutar(alquilerDto), HttpStatus.CREATED);
+	public ResponseEntity<String> registrarAlquiler(@RequestBody AlquilerDto alquilerDto) {
+		registrarAlquilerManejador.ejecutar(alquilerDto);
+		
+		return new ResponseEntity<>(ALQUILER_REGISTRADO, HttpStatus.CREATED);
 	}
 
 	@PostMapping("/alquiler/{identificacion}/{fechaAlquiler}")

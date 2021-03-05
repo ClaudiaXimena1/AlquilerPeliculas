@@ -1,5 +1,7 @@
 package co.com.ceiba.alquilerpeliculas.aplicacion.manejador.alquiler;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.AlquilerDto;
@@ -16,6 +18,7 @@ public class RegistrarAlquilerManejador {
 		this.registrarAlquilerServicio = registrarAlquilerServicio;
 	}
 	
+	@Transactional
 	public AlquilerDto ejecutar(AlquilerDto alquilerDto) {
 		Alquiler alquiler = AlquilerFactory.toEntidad(alquilerDto);
 		

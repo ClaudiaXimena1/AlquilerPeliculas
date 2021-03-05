@@ -1,5 +1,7 @@
 package co.com.ceiba.alquilerpeliculas.aplicacion.manejador.cliente;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.ClienteDto;
@@ -14,7 +16,8 @@ public class CrearClienteManejador {
 	public CrearClienteManejador(CrearClienteServicio clienteServicio) {
 		this.clienteServicio = clienteServicio;
 	}
-
+	
+	@Transactional
 	public ClienteDto ejecutar(ClienteDto clienteDto) {
 		Cliente cliente = new Cliente(null, clienteDto.getIdentificacion(), clienteDto.getNombres(),
 				clienteDto.getApellidos(), clienteDto.getDireccion(), clienteDto.getTelefonoFijo(),

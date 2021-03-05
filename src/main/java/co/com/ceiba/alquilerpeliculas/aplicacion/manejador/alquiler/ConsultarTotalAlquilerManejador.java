@@ -1,5 +1,7 @@
 package co.com.ceiba.alquilerpeliculas.aplicacion.manejador.alquiler;
 
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.alquilerpeliculas.dominio.servicio.alquiler.ConsultarValorTotalServicio;
@@ -12,7 +14,8 @@ public class ConsultarTotalAlquilerManejador {
 	public ConsultarTotalAlquilerManejador(ConsultarValorTotalServicio consultarValorTotalServicio) {
 		this.consultarValorTotalServicio = consultarValorTotalServicio;
 	}
-
+	
+	@Transactional
 	public Double ejecutar(String identificacion, String fechaAlquiler) {
 		return consultarValorTotalServicio.ejecutar(identificacion, fechaAlquiler);
 	}

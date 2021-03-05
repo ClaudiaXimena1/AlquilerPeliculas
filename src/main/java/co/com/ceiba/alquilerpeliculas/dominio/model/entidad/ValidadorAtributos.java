@@ -8,11 +8,12 @@ import co.com.ceiba.alquilerpeliculas.dominio.excepcion.ValidaAtributosObligator
 public final class ValidadorAtributos {
 
 	private ValidadorAtributos() {
+
 	}
 
 	public static void validarAtributos(Object atributo, String mensaje) {
 
-		if (atributo == null) {
+		if (atributo == null || atributo == "") {
 			throw new ValidaAtributosObligatorios(mensaje);
 		}
 

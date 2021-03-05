@@ -2,7 +2,6 @@ package co.com.ceiba.alquilerpeliculas.infraestructura.controlador;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -28,8 +27,9 @@ public class PeliculaControlador {
 	private final ActualizarPeliculaManejador actualizarPeliculaManejador;
 	private final ConsultarPorGeneroManejador consultarPorGeneroManejador;
 	private final ConsultarPorNombreManejador consultarPorNombreManejador;
+	private static final String PELICULA_CREADA = "Pelicula Creada Correctamente.";
+	private static final String PELICULA_ACTUALIZADA = "Pelicula Actualizada Correctamente.";
 
-	@Autowired
 	public PeliculaControlador(CrearPeliculaManejador crearPeliculaManejador,
 			ActualizarPeliculaManejador actualizarPeliculaManejador,
 			ConsultarPorGeneroManejador consultarPorGeneroManejador,
@@ -41,10 +41,10 @@ public class PeliculaControlador {
 	}
 
 	@PostMapping("/peliculas")
-	public ResponseEntity<PeliculaDto> crearPelicula(@RequestBody PeliculaDto peliculaDto) {
-
-		return new ResponseEntity<>(crearPeliculaManejador.ejecutar(peliculaDto),
-				HttpStatus.CREATED);
+	public ResponseEntity<String> crearPelicula(@RequestBody PeliculaDto peliculaDto) {
+		crearPeliculaManejador.ejecutar(peliculaDto);
+		
+		return new ResponseEntity<>(PELICULA_CREADA, HttpStatus.CREATED);
 	}
 
 	@GetMapping("/peliculas/genero/{genero}")
@@ -62,10 +62,11 @@ public class PeliculaControlador {
 	}
 
 	@PutMapping("/peliculas/{id}")
-	public ResponseEntity<PeliculaDto> actualizarPelicula(@RequestBody PeliculaDto peliculaDto, @PathVariable Long id) {
+	public ResponseEntity<String> actualizarPelicula(@RequestBody PeliculaDto peliculaDto, @PathVariable Long id) {
 		Pelicula peliculaNew = new Pelicula(id, peliculaDto.getNombre(), peliculaDto.getGenero(), peliculaDto.getDuracion());
-
-		return new ResponseEntity<>(actualizarPeliculaManejador.ejecutar(peliculaNew), HttpStatus.OK);
+		actualizarPeliculaManejador.ejecutar(peliculaNew);
+		
+		return new ResponseEntity<>(PELICULA_ACTUALIZADA, HttpStatus.OK);
 	}
 
 }

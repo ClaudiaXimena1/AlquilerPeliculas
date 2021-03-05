@@ -62,13 +62,7 @@ public class ActualizarPeliculaServicioTest {
 		PeliculaTestDataBuilder peliculaTestDataBuilder = new PeliculaTestDataBuilder();
 		peliculaTestDataBuilder.setId((long) 12);
 		
-		try {
-			actualizarPeliculaServicio.ejecutar(peliculaTestDataBuilder.build());
-			
-		} catch (Exception e) {
-			Assert.assertTrue(e.getMessage().contains(mensage));
-		}	
-
+		assertThrows(() -> actualizarPeliculaServicio.ejecutar(peliculaTestDataBuilder.build()), ValidaExistenciaExcepcion.class, mensage);
 		
 	}
 	

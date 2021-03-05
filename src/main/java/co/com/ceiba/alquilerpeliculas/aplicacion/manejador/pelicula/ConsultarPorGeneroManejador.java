@@ -2,7 +2,8 @@ package co.com.ceiba.alquilerpeliculas.aplicacion.manejador.pelicula;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.PeliculaDto;
@@ -13,11 +14,11 @@ public class ConsultarPorGeneroManejador {
 	
 	private final ConsultarPorGeneroServicio consultaPorGeneroServicio;
 	
-	@Autowired
 	public ConsultarPorGeneroManejador(ConsultarPorGeneroServicio consultaPeliculaGeneroServicio) {
 		this.consultaPorGeneroServicio = consultaPeliculaGeneroServicio;
 	}
 	
+	@Transactional
 	public List<PeliculaDto> ejecutar(String genero){
 		return consultaPorGeneroServicio.ejecutar(genero);
 	}

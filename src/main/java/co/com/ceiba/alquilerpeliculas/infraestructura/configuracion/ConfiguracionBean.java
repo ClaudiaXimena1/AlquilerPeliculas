@@ -59,7 +59,7 @@ public class ConfiguracionBean {
 	public CrearClienteServicio getClienteServicio(ClienteRepositorio clienteRepositorio) {
 		return new CrearClienteServicio(clienteRepositorio);
 	}
-	
+
 	@Bean
 	public ConsultarValorTotalServicio getConsultarTotalServicio(AlquilerRepositorio alquilerRepositorio) {
 		return new ConsultarValorTotalServicio(alquilerRepositorio);

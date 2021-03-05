@@ -1,6 +1,7 @@
 package co.com.ceiba.alquilerpeliculas.aplicacion.manejador.pelicula;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import javax.transaction.Transactional;
+
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.alquilerpeliculas.dominio.model.dto.PeliculaDto;
@@ -10,15 +11,15 @@ import co.com.ceiba.alquilerpeliculas.dominio.servicio.pelicula.ActualizarPelicu
 @Component
 public class ActualizarPeliculaManejador {
 
-	private final ActualizarPeliculaServicio updPeliculaServicio;
+	private final ActualizarPeliculaServicio actualizaPeliculaServicio;
 
-	@Autowired
 	public ActualizarPeliculaManejador(ActualizarPeliculaServicio peliculaServicio) {
-		this.updPeliculaServicio = peliculaServicio;
+		this.actualizaPeliculaServicio = peliculaServicio;
 	}
-
+	
+	@Transactional
 	public PeliculaDto ejecutar(Pelicula pelicula) {
-		return updPeliculaServicio.ejecutar(pelicula);
+		return actualizaPeliculaServicio.ejecutar(pelicula);
 	}
 
 }

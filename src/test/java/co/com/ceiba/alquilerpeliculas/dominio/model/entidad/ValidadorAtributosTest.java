@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 import org.junit.Assert;
 import org.junit.Test;
 
+
 public class ValidadorAtributosTest {
 
 	@Test
@@ -16,7 +17,6 @@ public class ValidadorAtributosTest {
 		} catch (Exception e) {
 			Assert.assertTrue(e.getMessage().contains(mensageObligatorio));
 		}
-
 	}
 	
 	@Test

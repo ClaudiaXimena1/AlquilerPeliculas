@@ -5,6 +5,7 @@ import static org.junit.Assert.fail;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.function.Supplier;
 
 import org.junit.Assert;
@@ -16,24 +17,16 @@ import co.com.ceiba.alquilerpeliculas.dominio.testdatabuilder.AlquilerTestDataBu
 
 public class AlquilerTest {
 
-	DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
 	@Test
 	public void validarFechaAlquilerReqTest() {
 
 		final String mensage = "La Fecha de Alquiler es un dato obligatorio.";
 
-		try {
+		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
+		alquilerTestDataBuilder.setFechaAlquiler(null);
+		alquilerTestDataBuilder.setFechaEntrega(convertirFecha("2020-11-13"));
 
-			AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
-			alquilerTestDataBuilder.setFechaAlquiler(null);
-			alquilerTestDataBuilder.setFechaEntrega(dateFormat.parse("2020-11-13"));
-
-			assertThrows(() -> alquilerTestDataBuilder.build(), ValidaAtributosObligatorios.class, mensage);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		assertThrows(() -> alquilerTestDataBuilder.build(), ValidaAtributosObligatorios.class, mensage);
 
 	}
 
@@ -42,17 +35,11 @@ public class AlquilerTest {
 
 		final String mensage = "La Fecha de Entrega es un dato obligatorio.";
 
-		try {
+		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
+		alquilerTestDataBuilder.setFechaAlquiler(convertirFecha("2020-11-12"));
+		alquilerTestDataBuilder.setFechaEntrega(null);
 
-			AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
-			alquilerTestDataBuilder.setFechaAlquiler(dateFormat.parse("2020-11-12"));
-			alquilerTestDataBuilder.setFechaEntrega(null);
-
-			assertThrows(() -> alquilerTestDataBuilder.build(), ValidaAtributosObligatorios.class, mensage);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		assertThrows(() -> alquilerTestDataBuilder.build(), ValidaAtributosObligatorios.class, mensage);
 
 	}
 
@@ -61,17 +48,11 @@ public class AlquilerTest {
 
 		final String mensage = "La Fecha de Entrega debe ser mayor a la Fecha de Alquiler.";
 
-		try {
+		AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
+		alquilerTestDataBuilder.setFechaAlquiler(convertirFecha("2020-11-16"));
+		alquilerTestDataBuilder.setFechaEntrega(convertirFecha("2020-11-14"));
 
-			AlquilerTestDataBuilder alquilerTestDataBuilder = new AlquilerTestDataBuilder();
-			alquilerTestDataBuilder.setFechaAlquiler(dateFormat.parse("2020-11-16"));
-			alquilerTestDataBuilder.setFechaEntrega(dateFormat.parse("2020-11-14"));
-
-			assertThrows(() -> alquilerTestDataBuilder.build(), ComparaAtributosExcepcion.class, mensage);
-
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
+		assertThrows(() -> alquilerTestDataBuilder.build(), ComparaAtributosExcepcion.class, mensage);
 
 	}
 
@@ -84,6 +65,20 @@ public class AlquilerTest {
 					+ e.getClass().getCanonicalName(), exception.isInstance(e));
 			Assert.assertTrue(e.getMessage().contains(message));
 		}
+	}
+
+	private Date convertirFecha(String fecha) {
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Date fechaRetorna = null;
+
+		try {
+			fechaRetorna = dateFormat.parse(fecha);
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		return fechaRetorna;
+
 	}
 
 }

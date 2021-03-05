@@ -1,6 +1,5 @@
 package co.com.ceiba.alquilerpeliculas.infraestructura.controlador;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,16 +15,18 @@ import co.com.ceiba.alquilerpeliculas.dominio.model.dto.ClienteDto;
 public class ClienteControlador {
 
 	private final CrearClienteManejador crearClienteManejador;
+	private static final String CLIENTE_CREADO = "Cliente Creado Correctamente.";
 
-	@Autowired
 	public ClienteControlador(CrearClienteManejador crearClienteManejador) {
 		this.crearClienteManejador = crearClienteManejador;
 
 	}
 
 	@PostMapping("/clientes")
-	public ResponseEntity<ClienteDto> crearCliente(@RequestBody ClienteDto clienteDto) {
-		return new ResponseEntity<>(crearClienteManejador.ejecutar(clienteDto), HttpStatus.CREATED);
+	public ResponseEntity<String> crearCliente(@RequestBody ClienteDto clienteDto) {
+		crearClienteManejador.ejecutar(clienteDto);
+		
+		return new ResponseEntity<>(CLIENTE_CREADO, HttpStatus.CREATED);
 	}
 
 }
